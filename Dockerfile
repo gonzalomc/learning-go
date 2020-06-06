@@ -1,8 +1,8 @@
 FROM golang:alpine as builder
 WORKDIR /app
-COPY . .
-RUN apk add git 
+RUN apk add --no-cache git 
 RUN go get -d github.com/gorilla/mux
+COPY . .
 RUN go build -o app .
 
 FROM alpine
